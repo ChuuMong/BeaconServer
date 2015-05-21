@@ -1,0 +1,28 @@
+body {
+    padding-top: 20px;
+}
+
+.bg_sky {
+    background-color: #4fc1e9;
+}
+
+.auto_center {
+    width: 1280px;
+    margin: 0 auto;
+}
+
+.right_align {
+    margin-left: auto;
+    margin-right: 0;
+    text-align: right;
+}
+
+.half {
+    width: 50%;
+}
+
+
+.store-card:hover {
+    box-shadow: 5px 5px 10px #888;
+
+}
