@@ -68,10 +68,16 @@ public class BeaconController extends ObjectController {
 
         ResponseBeacon result = null;
         try {
+<<<<<<< HEAD
             Beacon beacon = beaconService.getBeaconByUUID(params.get("uuid"));
             if (beacon == null) throw new CustomException(ResponseCode.ERROR_NOT_BEACON_UUID);
             result = new ResponseBeacon(ResponseCode.SUCCESS);
             result.setBeacon(beacon);
+=======
+            Beacon beacon = beaconService.getBeaconByUUID(params.get("uuiid"));
+            if (beacon == null) throw new CustomException(ResponseCode.ERROR_NOT_BEACON_UUID);
+            result = new ResponseBeacon(ResponseCode.SUCCESS);
+>>>>>>> 4590df322b8c33bf3294dd2befa16a7767d1df80
         } catch (CustomException e) {
             return new ResponseBeacon(e.getCode(), "/get/data >> " + e.getMessage() + ", params:" + params);
         }
