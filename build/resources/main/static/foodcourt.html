@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en" n>
+<head>
+    <meta charset="utf-8">
+    <title>Google Phone Gallery</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/app.css">
+
+    <!-- Latest compiled and minified CSS -->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">-->
+    <!-- Optional theme -->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">-->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+
+    <script src="scripts/exercise.js"></script>
+</head>
+<body class="container auto_center">
+
+    <div ng-app="myApp" >
+        <div ng-controller="FoodCourtCtrl" >
+            <div class="col-md-8">
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-6">
+                            <form class="ng-pristine ng-valid">
+                                <input type="text" placeholder="Search..." class="form-control ng-pristine ng-valid" ng-model="searchKeywords">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" >
+                    <div class="col-sm-6 store-card" ng-repeat="store in storesResponse.store | filter:searchKeywords">
+                        <!--<div class="panel panel-info" data-ng-click="select(\'' + {{store}} + '\')">-->
+
+                        <div class="panel panel-info" data-ng-click="select(store)">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">{{ store.name }}</h3>
+                            </div>
+                            <div class="list-group">
+                                <img src="{{ store.img }}"  style="width: 100%; height: auto;"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="page-header">
+                    <h4 class="form-signin-heading">새로운 상점 등록 {{is_foodcourt_name}}</h4>
+                </div>
+
+                <div class="page-header">
+                    <!--<select ng-model="yourSelect"-->
+                            <!--ng-options="option as option in ['var1', 'var2', 'var3']"-->
+                            <!--ng-init="yourSelect='var1'"></select>-->
+                    <!--<input type="hidden" name="yourSelect" value="{{yourSelect}}" />-->
+                    <select class="form-control list-group-item active"
+                            ng-model="is_foodcourt_name"
+                            ng-options="item as item for item in items"
+                            ng-init="is_foodcourt_name"
+                            data-ng-change="onSelectChange(is_foodcourt_name)"></select>
+
+                    <br>
+
+                    <input type="text" data-ng-model="obj.name" class="form-control" placeholder="상점 이름" required="" autofocus="">
+                    <input type="text" data-ng-model="obj.img" class="form-control" placeholder="이미지 url" required="">
+                    <input type="text" data-ng-model="obj.address" class="form-control" placeholder="주소를 적어주세요" required="">
+
+                    <input type="number" data-ng-model="obj.latitude" class="form-control" placeholder="Gps X" required="">
+                    <input type="number" data-ng-model="obj.longitude" class="form-control" placeholder="Gps Y" required="">
+
+
+
+                </div>
+
+                <button class="btn btn-lg btn-primary btn-block" type="submit" data-ng-click="click()">상점 추가</button>
+            </div>
+            <div class="col-md-4">
+                <div class="page-header">
+                    <h4 class="form-signin-heading">선택된 상점정보</h4>
+                </div>
+
+                <div class="page-header">
+                    <input type="text" data-ng-model="editObj.name" class="form-control" placeholder="상점 이름" required="" autofocus="">
+                    <input type="text" data-ng-model="editObj.img" class="form-control" placeholder="이미지 url" required="">
+                    <input type="text" data-ng-model="editObj.address" class="form-control" placeholder="주소를 적어주세요" required="">
+                    <input type="number" data-ng-model="editObj.latitude" class="form-control" placeholder="Gps X" required="">
+                    <input type="number" data-ng-model="editObj.longitude" class="form-control" placeholder="Gps Y" required="">
+                </div>
+
+                <div class="btn-block right_align">
+
+                    <button class="btn btn-lg btn-warning" type="submit" data-ng-click="update()">수정하기</button>
+                    <button href="#deleteModal" class="btn btn-lg btn-danger right_align" type="submit" data-ng-click="delete()">삭제하기</button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
