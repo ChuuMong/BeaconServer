@@ -66,7 +66,7 @@ public class TestController extends ObjectController {
             beacon3.addPicureURL("http://cfile23.uf.tistory.com/original/221F4C3C547D47C135478B");
             beacon3.addPicureURL("http://cfile6.uf.tistory.com/image/2353DB4D552A9DA3282048");
             beacon3.addPicureURL("http://www.datanews.co.kr/Articleimages/2014/12/26/20141226052559867.jpg");
-            beacon3.setContentText("아이유랑 술 마셔요");
+            beacon3.setContentText("아이유랑 짠~ 술 마셔요");
 
             beaconService.insertBeacon(beacon3);
             List<Beacon> beaconList = new ArrayList<>();
